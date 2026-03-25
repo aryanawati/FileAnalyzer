@@ -10,7 +10,6 @@ for i in range(15):
 
 for i in range(10, 0, -1):
     fi.write(f"Deleting in {i} seconds.\n")
-    time.sleep(1)
-    fi.flush()
 
-open("outputfile.txt" , "w").close()
+fi.write(closingMessage)
+fi.close()

@@ -1,0 +1,27 @@
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+Deleting in 10 seconds.
+Deleting in 9 seconds.
+Deleting in 8 seconds.
+Deleting in 7 seconds.
+Deleting in 6 seconds.
+Deleting in 5 seconds.
+Deleting in 4 seconds.
+Deleting in 3 seconds.
+Deleting in 2 seconds.
+Deleting in 1 seconds.
+
+Finished writing! Closing now...
