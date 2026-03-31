@@ -1,4 +1,5 @@
-Number of Lines: 6
-Number of Words: 21
-Number of Characters: 105
-Number of Characters (No Spaces): 85
+Number of Lines: 12
+Number of Words: 177
+Number of Characters: 1143
+Number of Characters (No Spaces): 964
+Longest Words: ['Problem-solving', 'specialization', 'technological', 'Interestingly', 'communication', 'collaboration', 'documentation', 'participating', 'increasingly']
