@@ -1,0 +1,6 @@
+Longest line (length + content)
+Shortest line
+Empty lines count
+Most common word
+Top 5 most frequent words
+Unique words count
