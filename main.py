@@ -1,4 +1,44 @@
 import string
+import tkinter as tk
+from tkinter import filedialog
+
+def getFileContents():
+    choice = input("Use Example .txt File? (y/n)").lower()
+
+    if choice == "y":
+        filename = "inputfile.txt"
+        with open(filename, "r") as f:
+            return f.readlines()
+    elif choice == "n":
+        root = tk.Tk()
+        root.withdraw()
+        root.attributes('-topmost', True)
+        root.update()
+        try:
+            filename = filedialog.askopenfilename(
+                title="Select a .txt file",
+                filetypes=[("Text files", "*.txt"), ("All files", "*.*")]
+            )
+        finally:
+            root.quit()
+            root.destroy()
+        if not filename:
+            print("No file selected.")
+            return None
+    else:
+        print("Invalid Choice")
+        return None
+    
+    try:
+        with open(filename, "r") as f:
+            return f.readlines()
+    except FileNotFoundError:
+        print("File not found.")
+        return None
+    
+contents = getFileContents()
+if contents:
+    print("File loaded successfully.")
 
 def countWords(lineList):
     words = 0
@@ -37,12 +77,8 @@ def longestWords(lineList):
     
     return longest10         
 
-
-
-inputFile = open("inputfile.txt" , "r")
 outputFile = open("outputfile.txt" , "w")
 
-contents = inputFile.readlines()
 lines = len(contents)
 wordCount, charCount, spaceCount = countWords(contents)
 
@@ -52,5 +88,12 @@ outputFile.write(f"Number of Characters: {charCount}\n")
 outputFile.write(f"Number of Characters (No Spaces): {charCount - spaceCount}\n")
 outputFile.write(f"Longest Words: {longestWords(contents)}\n")
 
+print(
+    f"Number of Lines: {lines}\n",
+    f"Number of Words: {wordCount}\n",
+    f"Number of Characters: {charCount}\n",
+    f"Number of Characters (No Spaces): {charCount - spaceCount}\n",
+    f"Longest Words: {longestWords(contents)}\n"
+)
+
 outputFile.close()
-inputFile.close()
