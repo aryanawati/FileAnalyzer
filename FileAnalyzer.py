@@ -2,6 +2,10 @@ import string
 import tkinter as tk
 from tkinter import filedialog
 
+import matplotlib.pyplot as plt
+import pandas as pd
+from collections import Counter
+
 def getFileContents():
     choice = input("Use Example .txt File? (y/n)").lower()
 
@@ -58,7 +62,6 @@ def countWords(lineList):
         words += len(wordlist)
     return (words, chars, spaces)
 def longestWords(lineList):
-
     words = []
     for line in lineList:
         wordlist = line.split()
@@ -77,6 +80,34 @@ def longestWords(lineList):
     
     return longest10         
 
+def freqWords(lineList):
+    words = []
+    for line in lineList:
+        wordlist = line.split()
+        for word in wordlist:
+            words.append(word.strip(string.punctuation))
+    wordCounts = Counter(words)
+    freqWordsList = wordCounts.most_common(10)
+
+    return freqWordsList
+
+def graph(lineList):
+    graphPref = input("Would you like to graph word frequencies (y/n)").lower()
+    if graphPref == "y":
+        df = pd.DataFrame(freqWords(lineList), columns=["Word", "Frequency"])
+        plt.bar(df["Word"], df["Frequency"])
+        plt.xlabel("Words")
+        plt.ylabel("Frequency")
+        plt.xticks(rotation=45, ha="right")
+        plt.tight_layout()
+        plt.show()
+    elif graphPref == "n":
+        return None
+    else:
+        print("Invalid Option")
+        return None
+
+
 outputFile = open("outputfile.txt" , "w")
 
 lines = len(contents)
@@ -87,13 +118,17 @@ outputFile.write(f"Number of Words: {wordCount}\n")
 outputFile.write(f"Number of Characters: {charCount}\n")
 outputFile.write(f"Number of Characters (No Spaces): {charCount - spaceCount}\n")
 outputFile.write(f"Longest Words: {longestWords(contents)}\n")
+outputFile.write(f"Most Frequent Words: {freqWords(contents)}\n")
 
 print(
     f"Number of Lines: {lines}\n",
     f"Number of Words: {wordCount}\n",
     f"Number of Characters: {charCount}\n",
     f"Number of Characters (No Spaces): {charCount - spaceCount}\n",
-    f"Longest Words: {longestWords(contents)}\n"
+    f"Longest Words: {longestWords(contents)}\n",
+    f"Most Frequent Words: {freqWords(contents)}\n"
 )
+
+graph(contents)
 
 outputFile.close()

@@ -3,3 +3,4 @@ Number of Words: 177
 Number of Characters: 1143
 Number of Characters (No Spaces): 964
 Longest Words: ['Problem-solving', 'specialization', 'technological', 'Interestingly', 'communication', 'collaboration', 'documentation', 'participating', 'increasingly']
+Most Frequent Words: [('and', 8), ('a', 4), ('most', 3), ('in', 3), ('their', 3), ('to', 3), ('the', 3), ('line', 2), ('count', 2), ('words', 2)]
